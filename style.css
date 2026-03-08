@@ -198,3 +198,134 @@ footer { background: #000; color: #777; text-align: center; padding: 30px 0; }
 @media (max-width: 480px) {
     .testi-card { padding: 25px; }
 }
+/* Kapcsolat szekció - Széles elrendezés */
+.contact {
+    padding: 40px 0; /* Minimálisra vett magasság */
+    background: #0f0f0f;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Itt a lényeg: a gap tolja szét a két oldalt, a max-width pedig engedi szélesre */
+    gap: 150px; 
+    align-items: start;
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* Bal oldal - Form */
+.contact-form-wrapper {
+    text-align: left;
+}
+
+.contact-form-wrapper h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* Jobb oldal - Minden kényszerítve balra */
+.contact-info {
+    text-align: left; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Ez tolja az egészet a saját térfelének a bal szélére */
+}
+
+.info-content {
+    width: 100%;
+    text-align: left;
+}
+
+.info-content h3 {
+    font-size: 1.8rem;
+    color: #2ecc71;
+    margin: 0 0 15px 0;
+    text-align: left;
+}
+
+.quote {
+    font-style: italic;
+    color: #aaa;
+    border-left: 3px solid #2ecc71;
+    padding-left: 15px;
+    margin: 10px 0 25px 0;
+    text-align: left;
+    max-width: 400px; /* Hogy ne nyúljon túl hosszan a szöveg */
+}
+
+/* Elérhetőségek - precíz egymás alá rendezés */
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center; /* Ikon és szöveg egy vonalban */
+    gap: 15px;
+    text-align: left;
+}
+
+.detail-item i {
+    font-size: 1.1rem;
+    color: #2ecc71;
+    background: rgba(46, 204, 113, 0.1);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.detail-item div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Szövegek egymás alatt balra */
+}
+
+.detail-item span {
+    font-size: 0.7rem;
+    color: #555;
+    text-transform: uppercase;
+}
+
+.detail-item a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+.info-footer {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #222;
+    color: #444;
+    font-size: 0.8rem;
+    width: 100%;
+    text-align: left;
+}
+
+/* Mobil nézet */
+@media (max-width: 900px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .contact-info, .detail-item, .detail-item div {
+        align-items: center;
+        text-align: center;
+    }
+    .quote {
+        border-left: none;
+        padding-left: 0;
+        margin: 10px auto;
+    }
+}
