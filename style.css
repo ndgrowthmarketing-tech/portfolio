@@ -98,7 +98,7 @@ body { font-family: 'Segoe UI', Tahoma, sans-serif; color: var(--text); line-hei
 .contact { padding: 80px 0; background: var(--dark); color: white; text-align: center; }
 .contact-box { max-width: 600px; margin: 0 auto; }
 .contact-form { margin-top: 30px; display: flex; flex-direction: column; gap: 15px; }
-.contact-form input, .contact-form textarea { padding: 15px; border-radius: 5px; border: none; width: 100%; }
+.contact-form input, .contact-form textarea { padding: 15px; border-radius: 5px; border: none; width: 100%; resize: none;}
 
 /* Side Menu Mobilon */
 .burger { display: none; cursor: pointer; z-index: 1100; }
@@ -328,4 +328,5 @@ footer { background: #000; color: #777; text-align: center; padding: 30px 0; }
         padding-left: 0;
         margin: 10px auto;
     }
+
 }
