@@ -30,14 +30,24 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
-// Sima görgetés
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+/// Sima görgetés és aloldalról való visszaugrás kezelése
+document.querySelectorAll('a[href*="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        window.scrollTo({
-            top: target.offsetTop - 85,
-            behavior: 'smooth'
-        });
+        const href = this.getAttribute('href');
+        
+        // Ha a link csak egy ID (pl. #pricing) ÉS az adott elem létezik ezen az oldalon
+        if (href.startsWith('#')) {
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault(); // Megállítjuk az alap ugrást
+                window.scrollTo({
+                    top: target.offsetTop - 85,
+                    behavior: 'smooth' // Szépen görgetünk
+                });
+            }
+        } 
+        // Ha a link tartalmazza az index.html-t (pl. ../index.html#pricing)
+        // VAGY az elem nem létezik az oldalon, akkor NEM fut le a preventDefault,
+        // így a böngésző rendesen betölti a főoldalt a megadott helyen.
     });
 });
