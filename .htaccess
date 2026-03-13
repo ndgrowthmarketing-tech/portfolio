@@ -1,4 +1,24 @@
+# 1. UTF-8 kódolás kényszerítése (hogy az ékezetek mindenhol jól jelenjenek meg)
+AddDefaultCharset UTF-8
+
+# 2. Átirányítás HTTPS-re (ha van SSL tanúsítványod, ez kötelező)
 RewriteEngine On
-RewriteCond % {REQUEST_FILENAME} !-d
-RewriteCond % {REQUEST_FILENAME}\.html -f
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 3. .html kiterjesztés elrejtése
+# Ez teszi lehetővé, hogy a domain.hu/rolam.html helyett a domain.hu/rolam címen is elérhető legyen az oldal
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
 RewriteRule ^(.*)$ $1.html [NC,L]
+
+# 4. index.html elrejtése a link végéről
+# Ha valaki beírja, hogy domain.hu/index.html, visszadobja a sima domain.hu-ra
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*index\.html\ HTTP/
+RewriteRule ^(.*)index\.html$ /$1 [L,R=301]
+
+# 5. Egyedi hibaoldal beállítása (ha van hiba.html fájlod)
+ErrorDocument 404 /hiba.html
+
+# 6. Mappa listázás tiltása (biztonsági okokból)
+Options -Indexes
